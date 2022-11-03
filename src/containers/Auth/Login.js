@@ -9,7 +9,25 @@ import { FormattedMessage } from "react-intl";
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      email: "",
+      password: "",
+      isShowpass: false,
+    };
   }
+  handleOnChangeEmail = (event) => {
+    this.setState({
+      email: event.target.value,
+    });
+  };
+
+  handleOnChangePass = (event) => {
+    this.setState({ password: event.target.value });
+  };
+
+  handleSubmit = () => {
+    alert("login success");
+  };
 
   render() {
     return (
@@ -23,18 +41,28 @@ class Login extends Component {
                 type="email"
                 className="form-control mt-1"
                 placeholder="Enter email"
+                value={this.state.email}
+                onChange={(event) => this.handleOnChangeEmail(event)}
               />
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
               <input
-                type="password"
+                type={this.state.isShowpass ? 'text' : 'password'}
                 className="form-control mt-1"
                 placeholder="Enter password"
+                value={this.state.password}
+                onChange={(event) => this.handleOnChangePass(event)}
               />
             </div>
             <div className="d-grid gap-2 mt-3">
-              <button type="submit" className="btn">
+              <button
+                type="submit"
+                className="btn"
+                onClick={() => {
+                  this.handleSubmit();
+                }}
+              >
                 Login
               </button>
             </div>
