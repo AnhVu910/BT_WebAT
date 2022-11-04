@@ -28,6 +28,11 @@ class Login extends Component {
   handleSubmit = () => {
     alert("login success");
   };
+  handleShowHidePass = () => {
+    this.setState({
+      isShowpass: !this.state.isShowpass,
+    });
+  };
 
   render() {
     return (
@@ -47,13 +52,15 @@ class Login extends Component {
             </div>
             <div className="form-group mt-3">
               <label>Password</label>
-              <input
-                type={this.state.isShowpass ? 'text' : 'password'}
-                className="form-control mt-1"
-                placeholder="Enter password"
-                value={this.state.password}
-                onChange={(event) => this.handleOnChangePass(event)}
-              />
+              <div className="input-login">
+                <input
+                  type={this.state.isShowpass ? "text" : "password"}
+                  className="form-control mt-1"
+                  placeholder="Enter password"
+                  value={this.state.password}
+                  onChange={(event) => this.handleOnChangePass(event)}
+                />
+              </div>
             </div>
             <div className="d-grid gap-2 mt-3">
               <button
