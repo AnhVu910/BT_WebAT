@@ -16,7 +16,7 @@ body {
 .login-container {
   max-width: 500px;
   min-width: 300px;
-  max-height: 700px;
+  max-height: 800px;
   width: 30%;
   height: 60%;
   background-color: #ffffff;
@@ -72,7 +72,7 @@ button:hover {
   opacity: 0.8;
 }
 
-.btn {
+.btn{
   background: linear-gradient(
     135deg,
     rgba(34, 193, 195, 1) 0%,
@@ -90,7 +90,7 @@ button:hover {
 
 .login-with {
   font-size: 18px;
-  padding-top: 30px;
+  padding-top: 15px;
 }
 .social {
   display: flex;

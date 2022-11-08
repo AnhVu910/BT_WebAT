@@ -32,12 +32,24 @@ class Login extends Component {
       errorMessage: "",
     });
     try {
-      await handleLoginApi(this.state.email, this.state.password);
+      let data = await handleLoginApi(this.state.email, this.state.password);
+      if (data && data.errCode !== 0) {
+        this.setState({
+          errorMessage: data.message,
+        });
+      }
+      if (data && data.errCode === 0) {
+        this.props.userLoginsuccess(data.user);
+      }
     } catch (error) {
-      console.log(error);
-      this.setState({
-        errorMessage: error.message,
-      });
+      if (error.response) {
+        if (error.response.data) {
+          this.setState({
+            errorMessage: error.response.data.message,
+          });
+        }
+      }
+      
     }
   };
   handleShowHidePass = () => {
@@ -74,7 +86,7 @@ class Login extends Component {
                 />
               </div>
             </div>
-            <div className="mt-1 " style={{ color: "red" }}>
+            <div className="mt-1 " style={{ color: "red", fontSize: "17px" }}>
               {this.state.errorMessage}
             </div>
             <div className="d-grid gap-2 mt-3">
@@ -110,9 +122,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     navigate: (path) => dispatch(push(path)),
-    adminLoginSuccess: (adminInfo) =>
-      dispatch(actions.adminLoginSuccess(adminInfo)),
-    adminLoginFail: () => dispatch(actions.adminLoginFail()),
+    // userLoginFail: () => dispatch(actions.userLoginFail()),
+    userLoginsuccess: (userInfo) =>
+      dispatch(actions.userLoginsuccess(userInfo)),
   };
 };
 
