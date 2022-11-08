@@ -5,6 +5,7 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import "./Login.scss";
 import { FormattedMessage } from "react-intl";
+import { handleLoginApi } from "../../services/userService";
 
 class Login extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Login extends Component {
       email: "",
       password: "",
       isShowpass: false,
+      errorMessage: "",
     };
   }
   handleOnChangeEmail = (event) => {
@@ -25,8 +27,18 @@ class Login extends Component {
     this.setState({ password: event.target.value });
   };
 
-  handleSubmit = () => {
-    alert("login success");
+  handleSubmit = async () => {
+    this.setState({
+      errorMessage: "",
+    });
+    try {
+      await handleLoginApi(this.state.email, this.state.password);
+    } catch (error) {
+      console.log(error);
+      this.setState({
+        errorMessage: error.message,
+      });
+    }
   };
   handleShowHidePass = () => {
     this.setState({
@@ -61,6 +73,9 @@ class Login extends Component {
                   onChange={(event) => this.handleOnChangePass(event)}
                 />
               </div>
+            </div>
+            <div className="mt-1 " style={{ color: "red" }}>
+              {this.state.errorMessage}
             </div>
             <div className="d-grid gap-2 mt-3">
               <button
