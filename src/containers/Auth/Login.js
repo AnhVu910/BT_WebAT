@@ -6,6 +6,7 @@ import * as actions from "../../store/actions";
 import "./Login.scss";
 import { FormattedMessage } from "react-intl";
 import { handleLoginApi } from "../../services/userService";
+import * as Yup from "yup";
 
 class Login extends Component {
   constructor(props) {
@@ -49,7 +50,6 @@ class Login extends Component {
           });
         }
       }
-      
     }
   };
   handleShowHidePass = () => {
@@ -82,7 +82,7 @@ class Login extends Component {
                   className="form-control mt-1"
                   placeholder="Enter password"
                   value={this.state.password}
-                  onChange={(event) => this.handleOnChangePass(event)}
+                  onChange={(event) => this.handleOnChangePass(event)}  
                 />
               </div>
             </div>
