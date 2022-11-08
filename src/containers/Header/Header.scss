@@ -4,11 +4,7 @@
   z-index: 99;
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(
-    135deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
+  background: linear-gradient(135deg, #3622c3 0%, #fd902dd6 100%);
   color: $common-text-color;
   height: 40px;
   position: relative;

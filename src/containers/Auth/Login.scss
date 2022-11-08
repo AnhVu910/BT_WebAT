@@ -54,7 +54,6 @@ button {
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(34, 193, 195);
   background: linear-gradient(
     90deg,
     rgba(34, 193, 195, 1) 0%,
@@ -70,11 +69,7 @@ button:hover {
 }
 
 .btn {
-  background: linear-gradient(
-    135deg,
-    rgba(34, 193, 195, 1) 0%,
-    rgba(253, 187, 45, 1) 100%
-  );
+  background: rgb(138, 41, 212);
   color: #ffffff;
   font-size: 20px;
   margin: 5px auto;
